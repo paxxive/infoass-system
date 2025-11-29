@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
@@ -20,13 +24,40 @@ app.get('/', (req, res) => {
   });
 });
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gamepoint')
-  .then(() => console.log('✅ Connected to MongoDB - GamePoint Database'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+// Test database connection with error handling
+const connectDB = async () => {
+  try {
+    if (process.env.MONGODB_URI) {
+      await mongoose.connect(process.env.MONGODB_URI);
+      console.log('✅ Connected to MongoDB - GamePoint Database');
+    } else {
+      console.log('⚠️  MongoDB URI not set - using mock data for development');
+    }
+  } catch (error) {
+    console.log('❌ MongoDB connection failed - using mock data');
+  }
+};
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🎮 GamePoint Server running on port ${PORT}`);
-  console.log(`📍 http://localhost:${PORT}`);
-});
+connectDB();
+
+// Try multiple ports until we find one that works
+const startServer = (port = 3000) => {
+  const server = app.listen(port, () => {
+    console.log(`🎮 GamePoint Server running on port ${port}`);
+    console.log(`📍 http://localhost:${port}`);
+    console.log(`🔗 API Base URL: http://localhost:${port}/api`);
+  });
+
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.log(`🔄 Port ${port} is busy, trying ${port + 1}...`);
+      setTimeout(() => {
+        startServer(port + 1);
+      }, 500);
+    } else {
+      console.error('❌ Server error:', err);
+    }
+  });
+};
+
+startServer();
