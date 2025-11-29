@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePoint - Your Ultimate Gaming Marketplace</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #0f0f23; 
+            color: white; 
+        }
+        .navbar { 
+            background: #1a1a2e; 
+            padding: 1rem 2rem; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .logo { 
+            color: #00ff88; 
+            font-size: 1.8rem; 
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        .logo span {
+            color: #ff6b6b;
+        }
+        .nav-links a { 
+            color: #cccccc; 
+            margin-left: 2rem; 
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+        .hero { 
+            text-align: center; 
+            padding: 6rem 2rem; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00ff88, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { 
+            font-size: 1.3rem; 
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta-button {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #1a1a2e;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Game<span>Point</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Games</a>
+            <a href="#">Credits</a>
+            <a href="#">Deals</a>
+            <a href="#">Login</a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <h1>Your Ultimate Gaming Marketplace</h1>
+        <p>Discover the best deals on physical games and in-game credits. All in one place, all at the best prices.</p>
+        <button class="cta-button">Explore Deals</button>
+    </section>
+
+    <script type="module">
+        console.log('🎮 GamePoint frontend loaded!');
+        
+        // Add some interactive elements
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('🚀 Welcome to GamePoint! Ready to find some amazing deals?');
+        });
+    </script>
+</body>
+</html>
