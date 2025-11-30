@@ -1,17 +1,22 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
 
 const router = express.Router();
+
+// Temporary in-memory user storage (replace with MongoDB later)
+let users = [];
+let userIdCounter = 1;
 
 // Register
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    console.log('Registration attempt:', { username, email });
+
     // Check if user exists
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    const existingUser = users.find(user => user.email === email || user.username === username);
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -19,19 +24,23 @@ router.post('/register', async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Create user
-    const user = new User({
+    // Create user object
+    const user = {
+      id: userIdCounter++,
       username,
       email,
       password: hashedPassword,
-    });
+      role: 'customer',
+      walletBalance: 0,
+      createdAt: new Date()
+    };
 
-    await user.save();
+    users.push(user);
 
     // Create token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET || 'fallback_secret_key',
       { expiresIn: '24h' }
     );
 
@@ -39,14 +48,19 @@ router.post('/register', async (req, res) => {
       message: 'User created successfully',
       token,
       user: {
-        id: user._id,
+        id: user.id,
         username: user.username,
         email: user.email,
-        role: user.role
+        role: user.role,
+        walletBalance: user.walletBalance
       }
     });
+
+    console.log('User registered successfully:', user.username);
+
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' });
+    console.error('Registration error:', error);
+    res.status(500).json({ message: 'Something went wrong', error: error.message });
   }
 });
 
@@ -55,8 +69,10 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log('Login attempt:', { email });
+
     // Find user
-    const user = await User.findOne({ email });
+    const user = users.find(user => user.email === email);
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -69,8 +85,8 @@ router.post('/login', async (req, res) => {
 
     // Create token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET || 'fallback_secret_key',
       { expiresIn: '24h' }
     );
 
@@ -78,16 +94,34 @@ router.post('/login', async (req, res) => {
       message: 'Login successful',
       token,
       user: {
-        id: user._id,
+        id: user.id,
         username: user.username,
         email: user.email,
         role: user.role,
         walletBalance: user.walletBalance
       }
     });
+
+    console.log('User logged in successfully:', user.username);
+
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' });
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Something went wrong', error: error.message });
   }
+});
+
+// Get all users (for testing)
+router.get('/users', (req, res) => {
+  res.json({
+    message: 'Current users (for development)',
+    users: users.map(user => ({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      walletBalance: user.walletBalance
+    }))
+  });
 });
 
 export default router;
