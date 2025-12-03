@@ -104,6 +104,68 @@ router.get('/:id', (req, res) => {
   res.json({ success: true, data: product });
 });
 
+// Get detailed product information with reviews
+router.get('/:id/details', (req, res) => {
+  const productId = parseInt(req.params.id);
+  const product = sampleProducts.find(p => p.id === productId);
+  
+  if (!product) {
+    return res.status(404).json({ success: false, message: 'Product not found' });
+  }
+
+  // Sample reviews data
+  const reviews = [
+    {
+      id: 1,
+      user: 'GamerPro99',
+      rating: 5,
+      date: '2024-11-25',
+      comment: 'Instant delivery! Got my Valorant points in seconds. Best price I found online!',
+      helpful: 24
+    },
+    {
+      id: 2,
+      user: 'MLPlayer123',
+      rating: 4,
+      date: '2024-11-20',
+      comment: 'Good service, but took about 5 minutes to deliver. Price was great though!',
+      helpful: 12
+    },
+    {
+      id: 3,
+      user: 'FPSLegend',
+      rating: 5,
+      date: '2024-11-18',
+      comment: 'Been using GamePoint for all my gaming needs. Never had an issue!',
+      helpful: 45
+    },
+    {
+      id: 4,
+      user: 'NewGamer',
+      rating: 3,
+      date: '2024-11-15',
+      comment: 'Worked fine, but the website could be faster.',
+      helpful: 2
+    }
+  ];
+
+  // Sample similar products
+  const similarProducts = sampleProducts
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
+
+  res.json({
+    success: true,
+    data: {
+      product,
+      reviews,
+      similarProducts,
+      averageRating: 4.3,
+      totalReviews: reviews.length
+    }
+  });
+});
+
 // Get products by category
 router.get('/category/:category', (req, res) => {
   const category = req.params.category;

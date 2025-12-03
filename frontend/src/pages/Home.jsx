@@ -50,6 +50,18 @@ const Home = () => {
           }}>
             Join Now
           </Link>
+          <Link to="/deals" style={{
+  background: 'transparent',
+  color: '#ff6b6b',
+  padding: '12px 30px',
+  textDecoration: 'none',
+  borderRadius: '25px',
+  fontSize: '1.1rem',
+  fontWeight: 'bold',
+  border: '2px solid #ff6b6b'
+}}>
+  Find Deals 🔍
+</Link>
         </div>
       </section>
     </div>

@@ -4,10 +4,15 @@ import { CartProvider } from './context/CartContext';
 import Navbar from './components/common/Navbar';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import Deals from './pages/Deals';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Dashboard from './pages/Dashboard';
+import ProductDetail from './pages/ProductDetail';
 import './App.css';
+
 
 function App() {
   return (
@@ -19,9 +24,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/deals" element={<Deals />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
             </Routes>
           </main>
         </div>
