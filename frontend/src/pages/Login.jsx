@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaGamepad, FaStore, FaBolt, FaExclamationTriangle, FaLock } from 'react-icons/fa';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,6 @@ const Login = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -55,14 +55,12 @@ const Login = () => {
 
     setLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       console.log('Login attempt:', { 
         email: formData.email, 
         rememberMe 
       });
       
-      // For demo purposes, always succeed
       alert('Login successful! (Demo mode - no actual authentication)');
       navigate('/');
       setLoading(false);
@@ -79,10 +77,14 @@ const Login = () => {
     const demo = demoAccounts[type];
     setFormData(demo);
     
-    // Auto-submit after filling
+    //Added Vendor Dashboard navigation
     setTimeout(() => {
       alert(`Demo ${type} login successful!`);
+      if(type === 'vendor') {
+        navigate('/vendor-dashboard');
+      } else {
       navigate('/');
+      }
     }, 500);
   };
 
@@ -105,21 +107,19 @@ const Login = () => {
       }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <Link to="/" style={{
-            color: '#00ff88',
+            color: '#66C0F4',
             fontSize: '2rem',
             fontWeight: 'bold',
             textDecoration: 'none',
-            textShadow: '0 0 10px #00ff88',
             display: 'inline-block',
             marginBottom: '0.5rem'
           }}>
-            Game<span style={{ color: '#ff6b6b' }}>Point</span>
+            Game<span style={{ color: '#66c0f47d' }}>Point</span>
           </Link>
           <h1 style={{ color: 'white', marginBottom: '0.5rem' }}>Welcome Back</h1>
           <p style={{ color: '#cccccc' }}>Sign in to your account to continue</p>
         </div>
 
-        {/* Demo Login Buttons */}
         <div style={{ marginBottom: '2rem' }}>
           <p style={{ color: '#888', textAlign: 'center', marginBottom: '1rem' }}>
             Try demo accounts:
@@ -136,10 +136,13 @@ const Login = () => {
                 borderRadius: '8px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                fontSize: '0.9rem'
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.9rem'
               }}
             >
-              🎮 Customer
+              <FaGamepad /> Customer
             </button>
             <button
               onClick={() => handleDemoLogin('vendor')}
@@ -152,10 +155,13 @@ const Login = () => {
                 borderRadius: '8px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                fontSize: '0.9rem'
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.9rem'
               }}
             >
-              🏪 Vendor
+              <FaStore /> Vendor
             </button>
             <button
               onClick={() => handleDemoLogin('admin')}
@@ -168,15 +174,17 @@ const Login = () => {
                 borderRadius: '8px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
-                fontSize: '0.9rem'
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.9rem'
               }}
             >
-              ⚡ Admin
+              <FaBolt /> Admin
             </button>
           </div>
         </div>
 
-        {/* Divider */}
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
@@ -188,7 +196,6 @@ const Login = () => {
           <div style={{ flex: 1, height: '1px', background: '#2d2d4d' }}></div>
         </div>
 
-        {/* Login Form */}
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={{
@@ -218,8 +225,8 @@ const Login = () => {
               }}
             />
             {errors.email && (
-              <p style={{ color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem' }}>
-                ⚠️ {errors.email}
+              <p style={{ color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <FaExclamationTriangle /> {errors.email}
               </p>
             )}
           </div>
@@ -233,7 +240,7 @@ const Login = () => {
                 Password
               </label>
               <Link to="/forgot-password" style={{
-                color: '#00ff88',
+                color: '#cccccc',
                 fontSize: '0.9rem',
                 textDecoration: 'none'
               }}>
@@ -259,8 +266,8 @@ const Login = () => {
               }}
             />
             {errors.password && (
-              <p style={{ color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem' }}>
-                ⚠️ {errors.password}
+              <p style={{ color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <FaExclamationTriangle /> {errors.password}
               </p>
             )}
           </div>
@@ -293,7 +300,7 @@ const Login = () => {
             disabled={loading}
             style={{
               width: '100%',
-              background: loading ? '#2d2d4d' : 'linear-gradient(45deg, #00ff88, #00cc6a)',
+              background: loading ? '#2d2d4d' : 'linear-gradient(45deg, #66C0F4, #66c0f470)',
               color: loading ? '#666' : '#1a1a2e',
               border: 'none',
               padding: '14px',
@@ -310,49 +317,10 @@ const Login = () => {
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
 
-          {/* Social Login */}
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <p style={{ color: '#888', marginBottom: '1rem' }}>Or continue with</p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <button
-                type="button"
-                style={{
-                  background: '#0f0f23',
-                  border: '1px solid #2d2d4d',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  color: 'white',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
-              >
-                <span>🔵</span> Google
-              </button>
-              <button
-                type="button"
-                style={{
-                  background: '#0f0f23',
-                  border: '1px solid #2d2d4d',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  color: 'white',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
-              >
-                <span>⚫</span> GitHub
-              </button>
-            </div>
-          </div>
-
           <div style={{ textAlign: 'center', color: '#cccccc' }}>
             Don't have an account?{' '}
             <Link to="/register" style={{
-              color: '#00ff88',
+              color: '#cccccc',
               fontWeight: 'bold',
               textDecoration: 'none'
             }}>
@@ -361,7 +329,6 @@ const Login = () => {
           </div>
         </form>
 
-        {/* Security Notice */}
         <div style={{
           marginTop: '2rem',
           padding: '1rem',
@@ -372,7 +339,7 @@ const Login = () => {
           color: '#888'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span>🔒</span>
+            <FaLock />
             <strong>Secure Login</strong>
           </div>
           <p>Your data is protected with 256-bit SSL encryption.</p>

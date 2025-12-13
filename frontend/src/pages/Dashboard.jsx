@@ -43,10 +43,10 @@ const Dashboard = () => {
   ]);
 
   const [wishlist, setWishlist] = useState([
-    { id: 1, name: 'Cyberpunk 2077', price: 29.99, platform: 'PC', added: '2024-11-27' },
-    { id: 2, name: 'Nintendo Switch Pro', price: 69.99, platform: 'Nintendo', added: '2024-11-25' },
-    { id: 3, name: 'FIFA 24', price: 49.99, platform: 'PlayStation', added: '2024-11-22' },
-    { id: 4, name: '2000 Robux', price: 24.99, platform: 'Roblox', added: '2024-11-20' }
+    { id: 1, name: 'Cyberpunk 2077', price: 1200, platform: 'PC', added: '2024-11-27' },
+    { id: 2, name: 'Nintendo Switch Pro', price: 15000, platform: 'Nintendo', added: '2024-11-25' },
+    { id: 3, name: 'FIFA 24', price: 1500, platform: 'PlayStation', added: '2024-11-22' },
+    { id: 4, name: '2000 Robux', price: 1380, platform: 'Roblox', added: '2024-11-20' }
   ]);
 
   const [recentActivity, setRecentActivity] = useState([
@@ -275,7 +275,7 @@ const Dashboard = () => {
                       <div>
                         <div style={{ color: '#888', fontSize: '0.9rem' }}>Wallet Balance</div>
                         <div style={{ color: '#00ff88', fontSize: '1.8rem', fontWeight: 'bold' }}>
-                          ${userData.walletBalance.toFixed(2)}
+                           ₱{userData.walletBalance.toFixed(2)}
                         </div>
                       </div>
                     </div>
@@ -445,7 +445,7 @@ const Dashboard = () => {
                             {order.status}
                           </div>
                           <div style={{ color: '#00ff88', fontWeight: 'bold', fontSize: '1.2rem' }}>
-                            ${order.total.toFixed(2)}
+                             ₱{order.total.toFixed(2)}
                           </div>
                         </div>
                       </div>
@@ -571,7 +571,7 @@ const Dashboard = () => {
                               {order.status}
                             </div>
                             <div style={{ color: '#00ff88', fontWeight: 'bold', fontSize: '1.5rem' }}>
-                              ${order.total.toFixed(2)}
+                               ₱{order.total.toFixed(2)}
                             </div>
                           </div>
                         </div>
@@ -692,7 +692,7 @@ const Dashboard = () => {
                           {item.platform}
                         </div>
                         <div style={{ color: '#00ff88', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                          ${item.price}
+                           ₱{item.price}
                         </div>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
                           <button style={{
@@ -747,7 +747,7 @@ const Dashboard = () => {
                 }}>
                   <div style={{ color: '#888', marginBottom: '0.5rem' }}>Current Balance</div>
                   <div style={{ color: '#00ff88', fontSize: '3rem', fontWeight: 'bold' }}>
-                    ${userData.walletBalance.toFixed(2)}
+                     ₱{userData.walletBalance.toFixed(2)}
                   </div>
                   <div style={{ color: '#888', marginTop: '1rem' }}>
                     Available for purchases on GamePoint
@@ -810,21 +810,21 @@ const Dashboard = () => {
                         <div style={{ color: 'white', fontWeight: 'bold' }}>Added Funds</div>
                         <div style={{ color: '#888', fontSize: '0.9rem' }}>Today • Credit Card</div>
                       </div>
-                      <div style={{ color: '#00ff88', fontWeight: 'bold' }}>+$50.00</div>
+                      <div style={{ color: '#00ff88', fontWeight: 'bold' }}>+₱50.00</div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', borderBottom: '1px solid #2d2d4d' }}>
                       <div>
                         <div style={{ color: 'white', fontWeight: 'bold' }}>Game Purchase</div>
                         <div style={{ color: '#888', fontSize: '0.9rem' }}>Yesterday • Valorant Points</div>
                       </div>
-                      <div style={{ color: '#ff6b6b', fontWeight: 'bold' }}>-$9.99</div>
+                      <div style={{ color: '#ff6b6b', fontWeight: 'bold' }}>- ₱9.99</div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
                       <div>
                         <div style={{ color: 'white', fontWeight: 'bold' }}>Added Funds</div>
                         <div style={{ color: '#888', fontSize: '0.9rem' }}>Nov 25 • GCash</div>
                       </div>
-                      <div style={{ color: '#00ff88', fontWeight: 'bold' }}>+$100.00</div>
+                      <div style={{ color: '#00ff88', fontWeight: 'bold' }}>+₱100.00</div>
                     </div>
                   </div>
                 </div>

@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import 'react-icons/fa'; 
+import { 
+  FaFire, FaHeart, FaShoppingCart, FaRegFileAlt, FaStar, FaCog, FaLifeRing, 
+  FaChartBar, FaGamepad, FaGem, FaLock, FaTruck, FaSyncAlt, FaCrown, FaEnvelope, FaComment, FaPhone, FaTag 
+} from 'react-icons/fa';
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -73,8 +79,8 @@ const ProductDetail = () => {
   if (loading) {
     return (
       <div style={{ padding: '3rem', textAlign: 'center' }}>
-        <div style={{ fontSize: '2rem', color: '#00ff88', marginBottom: '1rem' }}>🎮</div>
-        <div style={{ color: '#00ff88', fontSize: '1.2rem' }}>Loading product details...</div>
+        <div style={{ fontSize: '2rem', color: '#66C0F4', marginBottom: '1rem' }}> <FaGamepad /> </div>
+        <div style={{ color: '#66C0F4', fontSize: '1.2rem' }}>Loading product details...</div>
       </div>
     );
   }
@@ -88,7 +94,7 @@ const ProductDetail = () => {
           The product you're looking for doesn't exist or has been removed.
         </p>
         <Link to="/products" style={{
-          background: 'linear-gradient(45deg, #00ff88, #00cc6a)',
+          background: 'linear-gradient(45deg, #66C0F4, #66C0F4)',
           color: '#1a1a2e',
           padding: '12px 30px',
           textDecoration: 'none',
@@ -106,9 +112,9 @@ const ProductDetail = () => {
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Breadcrumb Navigation */}
         <div style={{ marginBottom: '2rem', color: '#888' }}>
-          <Link to="/" style={{ color: '#00ff88', textDecoration: 'none' }}>Home</Link>
+          <Link to="/" style={{ color: '#66C0F4', textDecoration: 'none' }}>Home</Link>
           {' > '}
-          <Link to="/products" style={{ color: '#00ff88', textDecoration: 'none' }}>Products</Link>
+          <Link to="/products" style={{ color: '#66C0F4', textDecoration: 'none' }}>Products</Link>
           {' > '}
           <span style={{ color: 'white' }}>{product.name}</span>
         </div>
@@ -136,7 +142,7 @@ const ProductDetail = () => {
               </div>
               <div style={{
                 display: 'inline-block',
-                background: product.category === 'digital' ? '#ff6b6b' : '#00ff88',
+                background: product.category === 'digital' ? '#66C0F4' : '#00ff88',
                 color: '#1a1a2e',
                 padding: '5px 15px',
                 borderRadius: '20px',
@@ -162,11 +168,11 @@ const ProductDetail = () => {
               padding: '1.5rem',
               border: '1px solid #2d2d4d'
             }}>
-              <h3 style={{ color: '#00ff88', marginBottom: '1rem' }}>📊 Product Stats</h3>
+              <h3 style={{ color: '#66C0F4', marginBottom: '1rem' }}> <FaChartBar /> Product Stats</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#cccccc' }}>Delivery</span>
-                  <span style={{ color: '#00ff88', fontWeight: 'bold' }}>
+                  <span style={{ color: '#66C0F4', fontWeight: 'bold' }}>
                     {product.category === 'digital' ? 'INSTANT' : '3-5 DAYS'}
                   </span>
                 </div>
@@ -177,7 +183,7 @@ const ProductDetail = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#cccccc' }}>Category</span>
                   <span style={{ 
-                    color: product.category === 'digital' ? '#ff6b6b' : '#00ff88',
+                    color: product.category === 'digital' ? '#66C0F4' : '#00ff88',
                     fontWeight: 'bold' 
                   }}>
                     {product.category === 'digital' ? 'Digital Credit' : 'Physical Game'}
@@ -212,23 +218,23 @@ const ProductDetail = () => {
                       <span style={{ color: '#888' }}>({reviews.length} reviews)</span>
                     </div>
                     <div style={{
-                      background: '#00ff88',
+                      background: '#66C0F4',
                       color: '#1a1a2e',
                       padding: '3px 10px',
                       borderRadius: '15px',
                       fontSize: '0.9rem',
                       fontWeight: 'bold'
                     }}>
-                      🔥 Popular
+                      <FaFire /> Popular
                     </div>
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ color: '#888', fontSize: '1rem', textDecoration: 'line-through', marginBottom: '0.25rem' }}>
-                    ${(product.price * 1.2).toFixed(2)}
+                    ₱{(product.price * 1.2).toFixed(2)}
                   </div>
                   <div style={{ color: '#00ff88', fontSize: '2.5rem', fontWeight: 'bold' }}>
-                    ${product.price}
+                    ₱{product.price}
                   </div>
                   <div style={{ color: '#ff6b6b', fontWeight: 'bold' }}>
                     Save 20%
@@ -310,7 +316,7 @@ const ProductDetail = () => {
                     gap: '0.5rem'
                   }}
                 >
-                  🛒 Add to Cart
+                  <FaShoppingCart /> Add to Cart
                 </button>
                 <button
                   onClick={handleBuyNow}
@@ -331,13 +337,13 @@ const ProductDetail = () => {
                     gap: '0.5rem'
                   }}
                 >
-                  ⚡ Buy Now
+                  Buy Now
                 </button>
                 <button
                   style={{
                     background: 'transparent',
-                    color: '#00ff88',
-                    border: '2px solid #00ff88',
+                    color: '#66C0F4',
+                    border: '2px solid #66C0F4',
                     padding: '15px',
                     borderRadius: '8px',
                     fontSize: '1.1rem',
@@ -346,7 +352,7 @@ const ProductDetail = () => {
                     minWidth: '60px'
                   }}
                 >
-                  💖
+                  <FaHeart />
                 </button>
               </div>
             </div>
@@ -370,18 +376,18 @@ const ProductDetail = () => {
                     style={{
                       padding: '1rem 1.5rem',
                       background: 'transparent',
-                      color: selectedTab === tab ? '#00ff88' : '#cccccc',
+                      color: selectedTab === tab ? '#66C0F4' : '#cccccc',
                       border: 'none',
-                      borderBottom: selectedTab === tab ? '3px solid #00ff88' : 'none',
+                      borderBottom: selectedTab === tab ? '3px solid #66C0F4' : 'none',
                       fontWeight: 'bold',
                       cursor: 'pointer',
                       textTransform: 'capitalize'
                     }}
                   >
-                    {tab === 'description' && '📝 Description'}
-                    {tab === 'reviews' && '⭐ Reviews'}
-                    {tab === 'specs' && '⚙️ Specifications'}
-                    {tab === 'support' && '🛟 Support'}
+                     {tab === 'description' && <><FaRegFileAlt /> Description</>}
+                    {tab === 'reviews' && <><FaStar /> Reviews</>}
+                    {tab === 'specs' && <><FaCog /> Specifications</>}
+                    {tab === 'support' && <><FaLifeRing /> Support</>}
                   </button>
                 ))}
               </div>
@@ -390,7 +396,7 @@ const ProductDetail = () => {
               <div style={{ padding: '2rem' }}>
                 {selectedTab === 'description' && (
                   <div>
-                    <h3 style={{ color: '#00ff88', marginBottom: '1rem' }}>Product Description</h3>
+                    <h3 style={{ color: '#66C0F4', marginBottom: '1rem' }}>Product Description</h3>
                     <p style={{ color: '#cccccc', lineHeight: '1.6', marginBottom: '1rem' }}>
                       {product.description}
                     </p>
@@ -415,15 +421,15 @@ const ProductDetail = () => {
                 {selectedTab === 'reviews' && (
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                      <h3 style={{ color: '#00ff88' }}>Customer Reviews</h3>
+                      <h3 style={{ color: '#66C0F4' }}>Customer Reviews</h3>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <div style={{ textAlign: 'center' }}>
-                          <div style={{ fontSize: '2.5rem', color: '#00ff88', fontWeight: 'bold' }}>4.3</div>
+                          <div style={{ fontSize: '2.5rem', color: '#cccccc', fontWeight: 'bold' }}>4.3</div>
                           <div>{renderStars(4.3)}</div>
                           <div style={{ color: '#888', fontSize: '0.9rem' }}>{reviews.length} reviews</div>
                         </div>
                         <button style={{
-                          background: 'linear-gradient(45deg, #00ff88, #00cc6a)',
+                          background: 'linear-gradient(45deg, #66C0F4, #66C0F4)',
                           color: '#1a1a2e',
                           border: 'none',
                           padding: '10px 20px',
@@ -490,7 +496,7 @@ const ProductDetail = () => {
 
                 {selectedTab === 'specs' && (
                   <div>
-                    <h3 style={{ color: '#00ff88', marginBottom: '1.5rem' }}>Specifications</h3>
+                    <h3 style={{ color: '#66C0F4', marginBottom: '1.5rem' }}>Specifications</h3>
                     <div style={{
                       background: '#0f0f23',
                       borderRadius: '10px',
@@ -530,7 +536,7 @@ const ProductDetail = () => {
 
                 {selectedTab === 'support' && (
                   <div>
-                    <h3 style={{ color: '#00ff88', marginBottom: '1.5rem' }}>Customer Support</h3>
+                    <h3 style={{ color: '#66C0F4', marginBottom: '1.5rem' }}>Customer Support</h3>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                       <div style={{
                         background: '#0f0f23',
@@ -538,7 +544,7 @@ const ProductDetail = () => {
                         padding: '1.5rem',
                         textAlign: 'center'
                       }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📧</div>
+                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}> <FaEnvelope /> </div>
                         <h4 style={{ color: 'white', marginBottom: '0.5rem' }}>Email Support</h4>
                         <p style={{ color: '#888', fontSize: '0.9rem' }}>support@gamepoint.com</p>
                         <p style={{ color: '#cccccc', fontSize: '0.9rem' }}>Response time: 2-4 hours</p>
@@ -549,7 +555,7 @@ const ProductDetail = () => {
                         padding: '1.5rem',
                         textAlign: 'center'
                       }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💬</div>
+                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}> <FaComment /> </div>
                         <h4 style={{ color: 'white', marginBottom: '0.5rem' }}>Live Chat</h4>
                         <p style={{ color: '#888', fontSize: '0.9rem' }}>Available 24/7</p>
                         <p style={{ color: '#cccccc', fontSize: '0.9rem' }}>Instant response</p>
@@ -560,7 +566,7 @@ const ProductDetail = () => {
                         padding: '1.5rem',
                         textAlign: 'center'
                       }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📞</div>
+                        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}> <FaPhone /> </div>
                         <h4 style={{ color: 'white', marginBottom: '0.5rem' }}>Phone Support</h4>
                         <p style={{ color: '#888', fontSize: '0.9rem' }}>1-800-GAMEPOINT</p>
                         <p style={{ color: '#cccccc', fontSize: '0.9rem' }}>Mon-Fri: 9AM-6PM</p>
@@ -582,7 +588,7 @@ const ProductDetail = () => {
               position: 'sticky',
               top: '2rem'
             }}>
-              <h3 style={{ color: '#00ff88', marginBottom: '1rem' }}>Similar Products</h3>
+              <h3 style={{ color: '#66C0F4', marginBottom: '1rem' }}>Similar Products</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {similarProducts.map(similar => (
                   <Link
@@ -617,7 +623,7 @@ const ProductDetail = () => {
                           {similar.name}
                         </div>
                         <div style={{ color: '#00ff88', fontWeight: 'bold' }}>
-                          ${similar.price}
+                          ₱{similar.price}
                         </div>
                       </div>
                     </div>
@@ -634,16 +640,16 @@ const ProductDetail = () => {
                 border: '1px solid #2d2d4d',
                 textAlign: 'center'
               }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎯</div>
-                <h4 style={{ color: '#00ff88', marginBottom: '0.5rem' }}>Find Better Deals?</h4>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}> <FaTag/> </div>
+                <h4 style={{ color: '#cccccc', marginBottom: '0.5rem' }}>Find Better Deals?</h4>
                 <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '1rem' }}>
                   Use our Deal Finder to compare prices
                 </p>
                 <Link to="/deals" style={{
                   display: 'inline-block',
                   background: 'transparent',
-                  color: '#00ff88',
-                  border: '2px solid #00ff88',
+                  color: '#66C0F4',
+                  border: '2px solid #66c0f470',
                   padding: '8px 16px',
                   borderRadius: '20px',
                   textDecoration: 'none',
@@ -671,7 +677,7 @@ const ProductDetail = () => {
             textAlign: 'center',
             border: '1px solid #2d2d4d'
           }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🔒</div>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}> <FaLock /> </div>
             <div style={{ color: 'white', fontWeight: 'bold' }}>Secure Payment</div>
           </div>
           <div style={{
@@ -681,7 +687,7 @@ const ProductDetail = () => {
             textAlign: 'center',
             border: '1px solid #2d2d4d'
           }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🚚</div>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}> <FaTruck /> </div>
             <div style={{ color: 'white', fontWeight: 'bold' }}>Fast Delivery</div>
           </div>
           <div style={{
@@ -691,7 +697,7 @@ const ProductDetail = () => {
             textAlign: 'center',
             border: '1px solid #2d2d4d'
           }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🔄</div>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}> <FaSyncAlt /> </div>
             <div style={{ color: 'white', fontWeight: 'bold' }}>30-Day Return</div>
           </div>
           <div style={{
@@ -701,7 +707,7 @@ const ProductDetail = () => {
             textAlign: 'center',
             border: '1px solid #2d2d4d'
           }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>👑</div>
+            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}> <FaCrown/> </div>
             <div style={{ color: 'white', fontWeight: 'bold' }}>Best Price</div>
           </div>
         </div>

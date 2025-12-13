@@ -33,12 +33,10 @@ const Products = () => {
   const filterProducts = () => {
     let filtered = products;
 
-    // Apply category filter
     if (filter !== 'all') {
       filtered = filtered.filter(product => product.category === filter);
     }
 
-    // Apply search filter
     if (searchTerm) {
       filtered = filtered.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -55,8 +53,8 @@ const Products = () => {
   };
 
   const handleAddToCart = (product, e) => {
-    e.preventDefault(); // Prevent navigation when clicking Add to Cart
-    e.stopPropagation(); // Stop event from bubbling to the Link
+    e.preventDefault();
+    e.stopPropagation();
     addToCart(product);
   };
 
@@ -65,7 +63,7 @@ const Products = () => {
       textAlign: 'center',
       padding: '50px',
       fontSize: '1.2rem',
-      color: '#00ff88'
+      color: '#cccccc'
     }}>Loading amazing deals...</div>;
   }
 
@@ -73,7 +71,7 @@ const Products = () => {
     <div style={{ padding: '2rem' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h1>GamePoint Store</h1>
-        
+
         {/* Search Bar */}
         <div style={{
           position: 'relative',
@@ -89,9 +87,9 @@ const Products = () => {
               width: '100%',
               padding: '12px 50px 12px 20px',
               borderRadius: '25px',
-              border: '2px solid #2d2d4d',
-              background: '#1a1a2e',
-              color: 'white',
+              border: '2px solid #2a475e',
+              background: '#1b2838',
+              color: '#c7d5e0',
               fontSize: '1rem',
               outline: 'none'
             }}
@@ -106,7 +104,7 @@ const Products = () => {
                 transform: 'translateY(-50%)',
                 background: 'transparent',
                 border: 'none',
-                color: '#ff6b6b',
+                color: '#cf2a2a',
                 fontSize: '1.2rem',
                 cursor: 'pointer'
               }}
@@ -119,9 +117,9 @@ const Products = () => {
             left: '15px',
             top: '50%',
             transform: 'translateY(-50%)',
-            color: '#888'
+            color: '#c7d5e0',
+            fontSize: '1.1rem',
           }}>
-            🔍
           </span>
         </div>
 
@@ -135,8 +133,8 @@ const Products = () => {
           <button 
             onClick={() => setFilter('all')}
             style={{
-              background: filter === 'all' ? '#00ff88' : '#2d2d4d',
-              color: filter === 'all' ? '#1a1a2e' : 'white',
+              background: filter === 'all' ? '#00adee' : '#2a475e',
+              color: filter === 'all' ? '#171a21' : '#c7d5e0',
               border: 'none',
               padding: '10px 20px',
               borderRadius: '25px',
@@ -149,8 +147,8 @@ const Products = () => {
           <button 
             onClick={() => setFilter('physical')}
             style={{
-              background: filter === 'physical' ? '#00ff88' : '#2d2d4d',
-              color: filter === 'physical' ? '#1a1a2e' : 'white',
+              background: filter === 'physical' ? '#00adee' : '#2a475e',
+              color: filter === 'physical' ? '#171a21' : '#c7d5e0',
               border: 'none',
               padding: '10px 20px',
               borderRadius: '25px',
@@ -163,8 +161,8 @@ const Products = () => {
           <button 
             onClick={() => setFilter('digital')}
             style={{
-              background: filter === 'digital' ? '#00ff88' : '#2d2d4d',
-              color: filter === 'digital' ? '#1a1a2e' : 'white',
+              background: filter === 'digital' ? '#00adee' : '#2a475e',
+              color: filter === 'digital' ? '#171a21' : '#c7d5e0',
               border: 'none',
               padding: '10px 20px',
               borderRadius: '25px',
@@ -179,7 +177,7 @@ const Products = () => {
         {/* Search Results Info */}
         {searchTerm && (
           <div style={{
-            color: '#00ff88',
+            color: '#00adee',
             marginBottom: '1rem',
             display: 'flex',
             justifyContent: 'space-between',
@@ -187,7 +185,7 @@ const Products = () => {
           }}>
             <div>
               Search results for: "<strong>{searchTerm}</strong>"
-              <span style={{ color: '#cccccc', marginLeft: '1rem' }}>
+              <span style={{ color: '#c7d5e0', marginLeft: '1rem' }}>
                 ({filteredProducts.length} products found)
               </span>
             </div>
@@ -195,8 +193,8 @@ const Products = () => {
               onClick={clearSearch}
               style={{
                 background: 'transparent',
-                color: '#ff6b6b',
-                border: '1px solid #ff6b6b',
+                color: '#cf2a2a',
+                border: '1px solid #cf2a2a',
                 padding: '5px 10px',
                 borderRadius: '15px',
                 cursor: 'pointer',
@@ -225,17 +223,17 @@ const Products = () => {
               }}
             >
               <div style={{
-                background: '#1a1a2e',
+                background: '#1b2838ff',
                 borderRadius: '10px',
                 padding: '1.5rem',
-                border: '1px solid #2d2d4d',
+                border: '1px solid #1c2e3caf',
                 transition: 'transform 0.2s, box-shadow 0.2s',
                 height: '100%',
                 cursor: 'pointer'
               }}
               onMouseOver={(e) => {
                 e.target.style.transform = 'translateY(-5px)';
-                e.target.style.boxShadow = '0 10px 25px rgba(0, 255, 136, 0.1)';
+                e.target.style.boxShadow = '0 10px 25px rgba(0, 174, 238, 0.1)';
               }}
               onMouseOut={(e) => {
                 e.target.style.transform = 'translateY(0)';
@@ -243,14 +241,14 @@ const Products = () => {
               }}
               >
                 <h3 style={{ 
-                  color: '#00ff88', 
+                  color: '#c7d5e0', 
                   marginBottom: '0.5rem',
                   fontSize: '1.2rem'
                 }}>
                   {product.name}
                 </h3>
                 <p style={{ 
-                  color: '#cccccc', 
+                  color: '#c7d5e0', 
                   marginBottom: '1rem',
                   fontSize: '0.9rem',
                   minHeight: '40px'
@@ -265,8 +263,8 @@ const Products = () => {
                   marginBottom: '1rem'
                 }}>
                   <span style={{ 
-                    background: product.category === 'digital' ? '#ff6b6b' : '#00ff88',
-                    color: '#1a1a2e',
+                    background: product.category === 'digital' ? '#00aeee82' : '#00ff889c',
+                    color: '#171a21',
                     padding: '4px 8px',
                     borderRadius: '4px',
                     fontSize: '0.8rem',
@@ -279,7 +277,7 @@ const Products = () => {
                     fontWeight: 'bold',
                     fontSize: '1.1rem'
                   }}>
-                    ${product.price}
+                    ₱{product.price}
                   </span>
                 </div>
 
@@ -288,7 +286,7 @@ const Products = () => {
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   fontSize: '0.8rem',
-                  color: '#888',
+                  color: '#c7d5e0',
                   marginBottom: '1rem'
                 }}>
                   <span>Platform: {product.platform}</span>
@@ -298,8 +296,8 @@ const Products = () => {
                 <button 
                   onClick={(e) => handleAddToCart(product, e)}
                   style={{
-                    background: 'linear-gradient(45deg, #00ff88, #00cc6a)',
-                    color: '#1a1a2e',
+                    background: 'linear-gradient(45deg, #00ff88, #00ff888f)',
+                    color: '#171a21',
                     border: 'none',
                     padding: '10px 16px',
                     borderRadius: '5px',
@@ -329,7 +327,7 @@ const Products = () => {
           <div style={{
             textAlign: 'center',
             padding: '3rem',
-            color: '#cccccc'
+            color: '#c7d5e0'
           }}>
             {searchTerm ? (
               <div>

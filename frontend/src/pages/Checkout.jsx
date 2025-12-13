@@ -775,7 +775,7 @@ const Checkout = () => {
                       <div style={{ color: '#888', fontSize: '0.9rem' }}>Qty: {item.quantity}</div>
                     </div>
                     <div style={{ color: '#00ff88', fontWeight: 'bold' }}>
-                      ${(item.price * item.quantity).toFixed(2)}
+                        ₱{(item.price * item.quantity).toFixed(2)}
                     </div>
                   </div>
                 ))}
@@ -784,7 +784,7 @@ const Checkout = () => {
               <div style={{ marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                   <span style={{ color: '#cccccc' }}>Subtotal</span>
-                  <span style={{ color: 'white', fontWeight: 'bold' }}>${subtotal.toFixed(2)}</span>
+                  <span style={{ color: 'white', fontWeight: 'bold' }}> ₱{subtotal.toFixed(2)}</span>
                 </div>
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -796,7 +796,7 @@ const Checkout = () => {
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                   <span style={{ color: '#cccccc' }}>Tax (12%)</span>
-                  <span style={{ color: 'white', fontWeight: 'bold' }}>${tax.toFixed(2)}</span>
+                  <span style={{ color: 'white', fontWeight: 'bold' }}> ₱{tax.toFixed(2)}</span>
                 </div>
                 
                 <div style={{ 
@@ -808,7 +808,7 @@ const Checkout = () => {
                 }}>
                   <span style={{ color: 'white', fontSize: '1.1rem', fontWeight: 'bold' }}>Total</span>
                   <span style={{ color: '#00ff88', fontSize: '1.3rem', fontWeight: 'bold' }}>
-                    ${total.toFixed(2)}
+                      ₱{total.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -822,7 +822,7 @@ const Checkout = () => {
                   textAlign: 'center',
                   marginBottom: '1rem'
                 }}>
-                  🚚 Spend ${(50 - subtotal).toFixed(2)} more for FREE shipping!
+                  🚚 Spend  ₱{(50 - subtotal).toFixed(2)} more for FREE shipping!
                 </div>
               )}
               

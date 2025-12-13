@@ -11,9 +11,10 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
+import VendorDashboard from './pages/VendorDashboard';
 import './App.css';
 
-
+//Added Vendor Dashboard Route//
 function App() {
   return (
     <CartProvider>
@@ -31,6 +32,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/vendor-dashboard" element={<VendorDashboard />} /> 
             </Routes>
           </main>
         </div>
