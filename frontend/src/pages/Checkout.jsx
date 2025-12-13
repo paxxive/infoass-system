@@ -152,7 +152,7 @@ const Checkout = () => {
               <div style={{ color: '#cccccc' }}>
                 <p><strong>Order ID:</strong> {orderId}</p>
                 <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
-                <p><strong>Total:</strong> ${total.toFixed(2)}</p>
+                <p><strong>Total:</strong> ₱{total.toFixed(2)}</p>
                 <p><strong>Payment Method:</strong> {paymentInfo.method === 'cod' ? 'Cash on Delivery' : 'Credit Card'}</p>
               </div>
             </div>
