@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';  
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Navbar from './components/common/Navbar';
@@ -12,6 +12,8 @@ import Checkout from './pages/Checkout';
 import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
 import VendorDashboard from './pages/VendorDashboard';
+import AdminPage from './pages/AdminPage';
+
 import './App.css';
 
 //Added Vendor Dashboard Route//
@@ -33,6 +35,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/vendor-dashboard" element={<VendorDashboard />} /> 
+              <Route path="/admin" element={<AdminPage />} />
             </Routes>
           </main>
         </div>

@@ -78,13 +78,17 @@ const Login = () => {
     setFormData(demo);
     
     //Added Vendor Dashboard navigation
+    //Added Admin navigation
     setTimeout(() => {
-      alert(`Demo ${type} login successful!`);
-      if(type === 'vendor') {
-        navigate('/vendor-dashboard');
-      } else {
-      navigate('/');
-      }
+    alert(`Demo ${type} login successful!`);
+    if(type === 'vendor') {
+  navigate('/vendor-dashboard');
+  } else if (type === 'admin') {
+  navigate('/admin');  
+  } else {
+    navigate('/');
+  }
+
     }, 500);
   };
 
